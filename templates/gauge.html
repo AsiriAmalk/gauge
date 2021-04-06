@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<link href="/static/css/guage.css" rel="stylesheet">
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <h1>Gauge Chart Select</h1>
+                    <div class="select" class="slct">
+                        <select name="slct" id="slct" >
+                            <option selected disabled>Choose an option</option>
+                            {% for average in average_dict['Course'] %}
+                               <option value="{{ average_dict['Course'][loop.index0] }}">{{ average_dict['Course'][loop.index0] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <a href="/"><h4 class="title">Percentage Gauge Chart</h4></a>
+                        {#                            <p class="category">Detailed Population comparison with graphs and maps</p>#}
+                    </div>
+                    <div class="content">
+                        {% autoescape off %}
+                        {{ fig_div }}
+                        {% endautoescape %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/guage.js"></script>
+{% endblock %}
